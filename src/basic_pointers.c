@@ -128,7 +128,14 @@ static void GetIntFromPtr(int *some_ptr)
 	 * of varA, it is referred to as pass by-reference for varA.
 	 *
 	 * */
-	printf("The value of varA is: %d (passed to function by-reference)\n", *some_ptr);
+	if (some_ptr != NULL)
+	{
+		printf("The value of varA is: %d (passed to function by-reference)\n", *some_ptr);
+	}
+	else
+	{
+		printf("Null pointer exception\n");
+	}
 }
 
 /* Passing an integer to a function "by-value"
@@ -155,9 +162,16 @@ static void ModifyIntByUsingReference(int *some_ptr)
 	 * access and modify the variable's value
 	 * */
 	printf("\n%s(%d)\n", __FUNCTION__, (int)some_ptr);
-	printf("The value of varA is: %d (passed to function by-reference)\n", *some_ptr);
-	*some_ptr = 10;
-	printf("The value of varA modified to: %d (Modified by using reference)\n", *some_ptr);
+	if (some_ptr != NULL)
+	{
+		printf("The value of varA is: %d (passed to function by-reference)\n", *some_ptr);
+		*some_ptr = 10;
+		printf("The value of varA modified to: %d (Modified by using reference)\n", *some_ptr);
+	}
+	else
+	{
+		printf("Null pointer exception\n");
+	}
 }
 
 /*

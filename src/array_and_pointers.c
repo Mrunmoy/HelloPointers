@@ -102,9 +102,16 @@ static void GetIntArrayFromVarArray(int some_var[])
 	 * some_var's array elements
 	 * */
 	printf("The values of varA array (passed to function by-value)\n");
-	for(iter=0;iter<10;iter++)
+	if (some_var != NULL)
 	{
-		printf("some_var[%d]: %d\n", iter, some_var[iter]);
+		for(iter=0;iter<10;iter++)
+		{
+			printf("some_var[%d]: %d\n", iter, some_var[iter]);
+		}
+	}
+	else
+	{
+		printf("Null pointer exception\n");
 	}
 }
 
@@ -115,40 +122,47 @@ static void GetIntArrayFromPtr(int *some_ptr)
 	printf("\n%s(%d)\n", __FUNCTION__, (int)some_ptr);
 
 	printf("The values of varA array (passed to function by-reference)\n");
-	for(iter=0;iter<10;iter++)
+	if (some_ptr != NULL)
 	{
-		/* since some_ptr is pointing to the array.
-		 * it can be used with the [] operator to
-		 * index into the array */
-		printf("%d[%d]: %d\n", (int)some_ptr, iter, some_ptr[iter]);
+		for(iter=0;iter<10;iter++)
+		{
+			/* since some_ptr is pointing to the array.
+			 * it can be used with the [] operator to
+			 * index into the array */
+			printf("%d[%d]: %d\n", (int)some_ptr, iter, some_ptr[iter]);
+		}
+
+		printf("The values of varA array (accessed by adding index to pointer)\n");
+		for(iter=0;iter<10;iter++)
+		{
+			/* since some_ptr is pointing to the array.
+			 * it can be incremented to access the next element
+			 * of the array by adding the index to the pointer to
+			 * get the address of the next element, and then
+			 * using the * operator to dereference the address
+			 * to get to the value. */
+			printf("*(%d + %d): %d\n", (int)some_ptr, iter, *(some_ptr + iter));
+		}
+
+
+		printf("The values of varA array (accessed by incrementing the pointer)\n");
+		for(iter=0;iter<10;iter++)
+		{
+			/* since some_ptr is pointing to the array.
+			 * it can be incremented to access the next element
+			 * of the array by adding the index to the pointer to
+			 * get the address of the next element, and then
+			 * using the * operator to dereference the address
+			 * to get to the value. */
+			printf("*(%d): %d\n", (int)some_ptr, *(some_ptr));
+
+			/* increment the pointer to point to the next element in the array */
+			some_ptr++;
+		}
 	}
-
-	printf("The values of varA array (accessed by adding index to pointer)\n");
-	for(iter=0;iter<10;iter++)
+	else
 	{
-		/* since some_ptr is pointing to the array.
-		 * it can be incremented to access the next element
-		 * of the array by adding the index to the pointer to
-		 * get the address of the next element, and then
-		 * using the * operator to dereference the address
-		 * to get to the value. */
-		printf("*(%d + %d): %d\n", (int)some_ptr, iter, *(some_ptr + iter));
-	}
-
-
-	printf("The values of varA array (accessed by incrementing the pointer)\n");
-	for(iter=0;iter<10;iter++)
-	{
-		/* since some_ptr is pointing to the array.
-		 * it can be incremented to access the next element
-		 * of the array by adding the index to the pointer to
-		 * get the address of the next element, and then
-		 * using the * operator to dereference the address
-		 * to get to the value. */
-		printf("*(%d): %d\n", (int)some_ptr, *(some_ptr));
-
-		/* increment the pointer to point to the next element in the array */
-		some_ptr++;
+		printf("Null pointer exception\n");
 	}
 }
 
@@ -166,24 +180,31 @@ static void ModifyIntArrayByUsingValue(int some_value[])
 
 
 	printf("The values of varA array (passed to function by-value)\n");
-	for(iter=0;iter<10;iter++)
+	if (some_value != NULL)
 	{
-		/* each element of varA array is copied into
-		 * some_value array
-		 * */
-		printf("%d[%d]: %d\n", (int)some_value, iter, some_value[iter]);
-	}
+		for(iter=0;iter<10;iter++)
+		{
+			/* each element of varA array is copied into
+			 * some_value array
+			 * */
+			printf("%d[%d]: %d\n", (int)some_value, iter, some_value[iter]);
+		}
 
-	/* Modify the value of elements of some_value array */
-	for(iter=0;iter<10;iter++)
-	{
-		some_value[iter] = iter*2;
-	}
+		/* Modify the value of elements of some_value array */
+		for(iter=0;iter<10;iter++)
+		{
+			some_value[iter] = iter*2;
+		}
 
-	printf("The values of varA array modified (Modified by using value)\n");
-	for(iter=0;iter<10;iter++)
+		printf("The values of varA array modified (Modified by using value)\n");
+		for(iter=0;iter<10;iter++)
+		{
+			printf("%d[%d]: %d\n", (int)some_value, iter, some_value[iter]);
+		}
+	}
+	else
 	{
-		printf("%d[%d]: %d\n", (int)some_value, iter, some_value[iter]);
+		printf("Null pointer exception\n");
 	}
 }
 
@@ -199,24 +220,31 @@ static void ModifyIntArrayByUsingReference(int *some_ptr)
 	printf("\n%s(%d)\n", __FUNCTION__, (int)some_ptr);
 
 	printf("The value of varA array (passed to function by-reference)\n");
-	for(iter=0;iter<10;iter++)
+	if (some_ptr != NULL)
 	{
-		/* each element of varA array are accessed by
-		 * some_ptr directly using the [] operator
-		 * */
-		printf("%d[%d]: %d\n", (int)some_ptr, iter, some_ptr[iter]);
-	}
+		for(iter=0;iter<10;iter++)
+		{
+			/* each element of varA array are accessed by
+			 * some_ptr directly using the [] operator
+			 * */
+			printf("%d[%d]: %d\n", (int)some_ptr, iter, some_ptr[iter]);
+		}
 
-	/* Modify the value of elements of some_ptr array */
-	for(iter=0;iter<10;iter++)
-	{
-		some_ptr[iter] = iter*4;
-	}
+		/* Modify the value of elements of some_ptr array */
+		for(iter=0;iter<10;iter++)
+		{
+			some_ptr[iter] = iter*4;
+		}
 
-	printf("The values of varA array modified (Modified by using reference)\n");
-	for(iter=0;iter<10;iter++)
+		printf("The values of varA array modified (Modified by using reference)\n");
+		for(iter=0;iter<10;iter++)
+		{
+			printf("%d[%d]: %d\n", (int)some_ptr, iter, some_ptr[iter]);
+		}
+	}
+	else
 	{
-		printf("%d[%d]: %d\n", (int)some_ptr, iter, some_ptr[iter]);
+		printf("Null pointer exception\n");
 	}
 }
 

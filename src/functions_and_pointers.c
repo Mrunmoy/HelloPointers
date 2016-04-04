@@ -112,6 +112,10 @@ void ExecuteFunctionPassedbyValue(int (*funcPtr)(int,int))
 		result = funcPtr(3, 4);
 		printf("result = %d\n", result);
 	}
+	else
+	{
+		printf("Null pointer exception\n");
+	}
 }
 
 /* Passing poiter to Function by-reference */
@@ -131,6 +135,14 @@ void ExecuteFunctionPassedbyReference(int (**funcPtr)(int,int))
 			result = (*funcPtr)(5, 6);
 			printf("result = %d\n", result);
 		}
+		else
+		{
+			printf("Null pointer exception\n");
+		}
+	}
+	else
+	{
+		printf("Null pointer exception\n");
 	}
 }
 /*

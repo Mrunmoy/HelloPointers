@@ -111,19 +111,25 @@ static void StructPassbyValue(myStruct_t some_var)
 static void StructPassbyReference(myStruct_t *some_ptr)
 {
 	printf("\n%s(%d)\n", __FUNCTION__, (int)some_ptr);
-
-	/* the structure is passed by reference into
-	 * this function. the parameter some_ptr
-	 * contains the pointer to the variable stA.
-	 * The members of a structure pointer can be
-	 * accessed by using the "->" operator
-	 * to dereference into the structure.
-	 * */
-	printf("Value of structure passed by-reference is:\n");
-	printf("some_var.varA = %d\n", some_ptr->varA);
-	printf("some_var.varB = %c\n", some_ptr->varB);
-	printf("some_var.varC = %02.02f\n", some_ptr->varC);
-
+	
+	if (some_ptr != NULL)
+	{
+		/* the structure is passed by reference into
+		 * this function. the parameter some_ptr
+		 * contains the pointer to the variable stA.
+		 * The members of a structure pointer can be
+		 * accessed by using the "->" operator
+		 * to dereference into the structure.
+		 * */
+		printf("Value of structure passed by-reference is:\n");
+		printf("some_var.varA = %d\n", some_ptr->varA);
+		printf("some_var.varB = %c\n", some_ptr->varB);
+		printf("some_var.varC = %02.02f\n", some_ptr->varC);
+	}
+	else
+	{
+		printf("Null pointer exception!\n");
+	}
 	printf("Only the structure pointer is copied on the call-stack\n");
 }
 

@@ -15,7 +15,7 @@ SRCEXT      := c
 OBJEXT      := o
 
 # CFLAGS will be the options to pass to the compiler.
-CFLAGS      := -c -Wall -O3 -g
+CFLAGS      := -c -Wall -O3 -g -Wno-pointer-to-int-cast
 
 # LDFLAGS will be the options to pass to the linker.
 LDFLAGS=

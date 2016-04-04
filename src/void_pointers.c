@@ -90,14 +90,28 @@
 
 void UseVoidPtrAsInteger(void *vPtr)
 {
-	printf("%s(%d)\n", __FUNCTION__, (int)vPtr);
-	printf("When dereferenced as an integer, the value is: %d\n", *((int *)vPtr));
+	if (vPtr != NULL)
+	{
+		printf("%s(%d)\n", __FUNCTION__, (int)vPtr);
+		printf("When dereferenced as an integer, the value is: %d\n", *((int *)vPtr));
+	}
+	else
+	{
+		printf("Null Pointer Excception!\n");
+	}
 }
 
 void UseVoidPtrAsChar(void *vPtr)
 {
-	printf("%s(%d)\n", __FUNCTION__, (int)vPtr);
-	printf("When dereferenced as an char, the value is: %c\n", *((char *)vPtr));
+	if (vPtr != NULL)
+	{
+		printf("%s(%d)\n", __FUNCTION__, (int)vPtr);
+		printf("When dereferenced as an char, the value is: %c\n", *((char *)vPtr));
+	}
+	else
+	{
+		printf("Null Pointer Excception!\n");
+	}
 }
 
 
@@ -112,7 +126,7 @@ void VoidPointers(void)
 {
 	int varA = 15;
 	char varB = 'A';
-	void *voidPtr;
+	void *voidPtr = NULL;
 
 	printf("\n-----------------------\n");
 	printf("Void pointers\n");

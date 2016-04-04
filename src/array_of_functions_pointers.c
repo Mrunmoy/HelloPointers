@@ -173,7 +173,14 @@ void ArrayOfFunctionPointers(void)
 		 *
 		 * Passing 10 and 5 as function arguments.
 		 * */
-		int result = Calculate[oper](10, 5);
-		printf("result = %d\n\n", result);
+		if (Calculate[oper] != NULL)
+		{
+			int result = Calculate[oper](10, 5);
+			printf("result = %d\n\n", result);
+		}
+		else
+		{
+			printf("Null pointer exception\n");
+		}
 	}
 }

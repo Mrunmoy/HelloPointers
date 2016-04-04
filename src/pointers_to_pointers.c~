@@ -178,7 +178,7 @@ static void ModifyIntPtrByUsingReference(int **some_ptr_to_ptr)
 	printf("The value of pointer to ptrA is: %d (passed to function by-reference)\n", (int)some_ptr_to_ptr);
 	if (some_ptr_to_ptr != NULL)
 	{
-		if(*some_ptr_to_ptr != NULL)
+		if(*some_ptr_to_ptr = NULL)
 		{
 			printf("The value at address pointed to by ptrA is: %d (passed to function by-value)\n", **some_ptr_to_ptr);
 			*some_ptr_to_ptr = &varB;

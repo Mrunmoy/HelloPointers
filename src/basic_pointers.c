@@ -2,7 +2,7 @@
  * basic_pointers.c
  *
  *  Created on: 04-Apr-2016
- *      Author: MSamal
+ *      Author: Mrunmoy Samal
  *
  *  LICENSE:-
  *  This program is free software: you can redistribute it and/or modify
